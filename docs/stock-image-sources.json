@@ -1,0 +1,122 @@
+[
+  {
+    "name": "milk",
+    "url": "https://cdn.dummyjson.com/product-images/groceries/milk/1.webp",
+    "bytes": 36788
+  },
+  {
+    "name": "eggs",
+    "url": "https://cdn.dummyjson.com/product-images/groceries/eggs/1.webp",
+    "bytes": 56166
+  },
+  {
+    "name": "apple",
+    "url": "https://cdn.dummyjson.com/product-images/groceries/apple/1.webp",
+    "bytes": 72920
+  },
+  {
+    "name": "lemon",
+    "url": "https://cdn.dummyjson.com/product-images/groceries/lemon/1.webp",
+    "bytes": 72266
+  },
+  {
+    "name": "cucumber",
+    "url": "https://cdn.dummyjson.com/product-images/groceries/cucumber/1.webp",
+    "bytes": 46502
+  },
+  {
+    "name": "green-chili-pepper",
+    "url": "https://cdn.dummyjson.com/product-images/groceries/green-chili-pepper/1.webp",
+    "bytes": 51260
+  },
+  {
+    "name": "strawberry",
+    "url": "https://cdn.dummyjson.com/product-images/groceries/strawberry/1.webp",
+    "bytes": 93472
+  },
+  {
+    "name": "green-bell-pepper",
+    "url": "https://cdn.dummyjson.com/product-images/groceries/green-bell-pepper/1.webp",
+    "bytes": 83102
+  },
+  {
+    "name": "mulberry",
+    "url": "https://cdn.dummyjson.com/product-images/groceries/mulberry/1.webp",
+    "bytes": 113426
+  },
+  {
+    "name": "kiwi",
+    "url": "https://cdn.dummyjson.com/product-images/groceries/kiwi/1.webp",
+    "bytes": 93272
+  },
+  {
+    "name": "potatoes",
+    "url": "https://cdn.dummyjson.com/product-images/groceries/potatoes/1.webp",
+    "bytes": 69568
+  },
+  {
+    "name": "cooking-oil",
+    "url": "https://cdn.dummyjson.com/product-images/groceries/cooking-oil/1.webp",
+    "bytes": 51248
+  },
+  {
+    "name": "rice",
+    "url": "https://cdn.dummyjson.com/product-images/groceries/rice/1.webp",
+    "bytes": 56562
+  },
+  {
+    "name": "honey-jar",
+    "url": "https://cdn.dummyjson.com/product-images/groceries/honey-jar/1.webp",
+    "bytes": 82612
+  },
+  {
+    "name": "red-onions",
+    "url": "https://cdn.dummyjson.com/product-images/groceries/red-onions/1.webp",
+    "bytes": 77914
+  },
+  {
+    "name": "juice",
+    "url": "https://cdn.dummyjson.com/product-images/groceries/juice/1.webp",
+    "bytes": 47310
+  },
+  {
+    "name": "tissue-paper-box",
+    "url": "https://cdn.dummyjson.com/product-images/groceries/tissue-paper-box/1.webp",
+    "bytes": 62692
+  },
+  {
+    "name": "ice-cream",
+    "url": "https://cdn.dummyjson.com/product-images/groceries/ice-cream/1.webp",
+    "bytes": 95964
+  },
+  {
+    "name": "water",
+    "url": "https://cdn.dummyjson.com/product-images/groceries/water/1.webp",
+    "bytes": 70176
+  },
+  {
+    "name": "bananas",
+    "url": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=700&q=85&fm=webp",
+    "bytes": 28344
+  },
+  {
+    "name": "oranges",
+    "url": "https://images.unsplash.com/photo-1547514701-42782101795e?auto=format&fit=crop&w=700&q=85&fm=webp",
+    "bytes": 70298
+  },
+  {
+    "name": "tea",
+    "url": "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=700&q=85&fm=webp",
+    "bytes": 32270
+  },
+  {
+    "name": "nuts",
+    "url": "https://images.unsplash.com/photo-1599599810769-bcde5a160d32?auto=format&fit=crop&w=700&q=85&fm=webp",
+    "bytes": 65138
+  },
+  {
+    "name": "croissant",
+    "url": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=700&q=85&fm=webp",
+    "bytes": 94692
+  }
+]

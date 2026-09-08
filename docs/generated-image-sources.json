@@ -1,0 +1,34 @@
+[
+  {
+    "name": "hero-market",
+    "source": "exec-1d07d808-bef8-4f2c-88a4-7f03ebcb2d64.png"
+  },
+  {
+    "name": "hero-table",
+    "source": "exec-a3c25bc6-0363-4875-9768-3254c3e7716a.png"
+  },
+  {
+    "name": "products/tomatoes",
+    "source": "exec-c907d706-8831-4375-9ed3-acddd82bc1d6.png"
+  },
+  {
+    "name": "products/avocado",
+    "source": "exec-774431f6-f02d-492f-8a13-86c9ca94cafa.png"
+  },
+  {
+    "name": "products/bread",
+    "source": "exec-0bd59711-8641-420c-81a6-9e0591bf1685.png"
+  },
+  {
+    "name": "products/carrots",
+    "source": "exec-0ec9d6b0-60e5-49d8-a67d-ab22c841bc13.png"
+  },
+  {
+    "name": "hero-grocery-tote",
+    "source": "exec-01139bc7-6eb0-488b-b32f-7608ea4184a6.png"
+  },
+  {
+    "name": "hero-meal-cutout",
+    "source": "exec-cfbe7adf-95f0-413a-b3f3-438612cd1aa7.png"
+  }
+]

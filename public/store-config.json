@@ -1,0 +1,23 @@
+{
+  "brand": "Market & Basket",
+  "tagline": "Good food. Good days.",
+  "currency": "PKR",
+  "locale": "en-PK",
+  "whatsapp": "",
+  "email": "",
+  "serviceArea": "",
+  "siteUrl": "",
+  "demo": true,
+  "announcement": "Fresh ideas. Everyday favourites. A basket full of possibilities.",
+  "deliveryNote": "Ask us about availability, delivery areas, and charges before placing your order.",
+  "colors": { "green": "#267448", "cream": "#fcfcf6", "accent": "#ed863f" },
+  "fonts": { "display": "Fraunces Variable", "body": "DM Sans Variable" },
+  "navigation": [{ "label": "Home", "href": "/" }, { "label": "Shop all", "href": "/shop" }, { "label": "Our story", "href": "/about" }],
+  "sections": { "categories": true, "featured": true, "editorial": true, "collections": true, "faq": true },
+  "hero": {
+    "eyebrow": "FRESH IDEAS FOR YOUR EVERYDAY",
+    "title": "Fresh finds.", "italicTitle": "Good days.",
+    "description": "From your first coffee to what’s for dinner. Fill your basket with the things you love — and a little something new.",
+    "image": "/images/hero-grocery-tote.webp", "revealImage": "/images/hero-meal-cutout.webp", "editorialImage": "/images/hero-table.webp", "brushFadeMs": 1200
+  }
+}

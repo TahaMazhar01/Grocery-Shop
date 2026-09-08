@@ -1,0 +1,11 @@
+import { chromium } from '@playwright/test';
+import { mkdir, writeFile } from 'node:fs/promises';
+await mkdir('artifacts',{recursive:true});
+const browser=await chromium.launch({channel:'msedge',headless:true});
+const page=await browser.newPage({viewport:{width:1440,height:1000},deviceScaleFactor:1});
+const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+await page.goto('http://127.0.0.1:5173/',{waitUntil:'networkidle'});
+await page.screenshot({path:'artifacts/home-desktop.png',fullPage:true});
+console.log(JSON.stringify({title:await page.title(),h1:await page.locator('h1').allTextContents(),errors,overflow:await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)},null,2));
+await page.setViewportSize({width:390,height:844});await page.screenshot({path:'artifacts/home-mobile.png',fullPage:true});
+await writeFile('artifacts/initial-inspection.json',JSON.stringify(errors,null,2));await browser.close();

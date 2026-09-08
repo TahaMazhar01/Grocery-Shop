@@ -1,0 +1,43 @@
+{
+  "name": "market-and-basket",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "npm run catalog:build && tsc -b && vite build && node scripts/prerender.mjs",
+    "preview": "vite preview --host 127.0.0.1",
+    "catalog:build": "tsx scripts/build-catalog.ts",
+    "catalog:import": "tsx scripts/import-catalog.ts",
+    "fixture": "tsx scripts/create-fixture.ts",
+    "publish:prepare": "tsx scripts/prepare-publish.ts",
+    "test": "vitest run",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@fontsource-variable/dm-sans": "5.3.0",
+    "@fontsource-variable/fraunces": "5.3.0",
+    "fflate": "0.8.3",
+    "lucide-react": "1.43.0",
+    "papaparse": "5.7.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-router-dom": "7.18.3",
+    "zod": "4.5.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "@types/node": "26.5.0",
+    "@types/papaparse": "5.5.2",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.7",
+    "@vitejs/plugin-react": "6.1.1",
+    "tsx": "4.23.13",
+    "typescript": "7.0.2",
+    "vite": "8.2.2",
+    "vitest": "5.0.0"
+  },
+  "engines": {
+    "node": ">=22.14.0"
+  }
+}

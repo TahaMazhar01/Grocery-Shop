@@ -1,0 +1,11 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import '@fontsource-variable/dm-sans';
+import '@fontsource-variable/fraunces';
+import '@fontsource-variable/fraunces/standard-italic.css';
+import './styles.css';
+import './redesign.css';
+import App from './App';
+import { StoreProvider } from './context';
+ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><BrowserRouter><StoreProvider><App/></StoreProvider></BrowserRouter></React.StrictMode>);
