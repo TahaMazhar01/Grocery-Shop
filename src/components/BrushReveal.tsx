@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Sparkles } from 'lucide-react';
 
-export function BrushReveal({ first, second, hold, showSecond, motion, onReady }: {first:string;second:string;hold:number;showSecond:boolean;motion:boolean;onReady:(ready:boolean)=>void}) {
+export function BrushReveal({ first, second, hold, showSecond, motion, onReady, fit='contain' }: {first:string;second:string;hold:number;showSecond:boolean;motion:boolean;onReady:(ready:boolean)=>void;fit?:'contain'|'cover'}) {
  const area=useRef<HTMLDivElement>(null), canvasRef=useRef<HTMLCanvasElement>(null), cursor=useRef<HTMLDivElement>(null);
  const [loaded,setLoaded]=useState(false);const [failed,setFailed]=useState(false);const readyRef=useRef(onReady);readyRef.current=onReady;
  useEffect(()=>{setFailed(false);},[first,second]);
@@ -12,7 +12,7 @@ export function BrushReveal({ first, second, hold, showSecond, motion, onReady }
   for(let i=0;i<9;i++){const a=i*Math.PI*2/9,x=120+Math.cos(a)*18,y=120+Math.sin(a)*16,r=88+(i%3)*8;const gradient=bc.createRadialGradient(x,y,r*.3,x,y,r);gradient.addColorStop(0,'rgba(0,0,0,.82)');gradient.addColorStop(.6,'rgba(0,0,0,.65)');gradient.addColorStop(1,'transparent');bc.fillStyle=gradient;bc.fillRect(0,0,240,240);}
   let frame=0,visible=true,disposed=false,ready=false,w=0,h=0;let last:{x:number;y:number}|null=null;let autoStart=0;let autoDone=false;
   const points:{x:number;y:number;t:number}[]=[];const reduce=matchMedia('(prefers-reduced-motion: reduce)');const fine=matchMedia('(pointer:fine)');
-  function contain(target:CanvasRenderingContext2D,img:HTMLImageElement){const scale=Math.min(w/img.width,h/img.height);const iw=img.width*scale,ih=img.height*scale;target.drawImage(img,(w-iw)/2,(h-ih)/2,iw,ih);}
+  function contain(target:CanvasRenderingContext2D,img:HTMLImageElement){const scale=(fit==='cover'?Math.max:Math.min)(w/img.width,h/img.height);const iw=img.width*scale,ih=img.height*scale;target.drawImage(img,(w-iw)/2,(h-ih)/2,iw,ih);}
   function draw(now:number,force=false){frame=0;if(!ready||disposed||(!visible&&!force))return;ctx!.clearRect(0,0,w,h);ctx!.globalCompositeOperation='source-over';contain(ctx!,base);mc.clearRect(0,0,w,h);
    if(autoStart&&!autoDone&&motion&&!reduce.matches){const elapsed=now-autoStart;if(elapsed>1300&&elapsed<2300){const t=(elapsed-1300)/1000;points.push({x:w*(.26+t*.46),y:h*(.53+Math.sin(t*5)*.07),t:now});}if(elapsed>=2300)autoDone=true;}
    while(points.length&&now-points[0].t>hold+800)points.shift();if(points.length>65)points.splice(0,points.length-65);
@@ -28,9 +28,9 @@ export function BrushReveal({ first, second, hold, showSecond, motion, onReady }
   Promise.all([base.decode(),reveal.decode()]).then(()=>{if(disposed)return;ready=true;setLoaded(true);readyRef.current(true);autoStart=performance.now();resize();}).catch(()=>{if(!disposed){setLoaded(false);readyRef.current(false);}});
   node.addEventListener('pointermove',move);node.addEventListener('pointerleave',leave);
   return()=>{disposed=true;cancelAnimationFrame(frame);resizeObserver.disconnect();observer.disconnect();document.removeEventListener('visibilitychange',visibility);node.removeEventListener('pointermove',move);node.removeEventListener('pointerleave',leave);};
- },[first,second,hold,motion,showSecond]);
+ },[first,second,hold,motion,showSecond,fit]);
  return <div className="hero-image-area hero-cutout-area" ref={area}>
-  <img className="hero-photo hero-cutout-photo" data-second={showSecond} style={{opacity:loaded&&!showSecond?0:1}} src={failed?'/images/hero-market.webp':showSecond?second:first} alt={showSecond?'A colourful platter of vegetables, salad, and toasted bread':'A grocery tote overflowing with fresh vegetables, fruit, and bread'} width="1024" height="1024" fetchPriority="high" onError={()=>setFailed(true)}/>
+  <img className="hero-photo hero-cutout-photo" data-second={showSecond} style={{opacity:loaded&&!showSecond?0:1,objectFit:fit}} src={failed?'/images/hero-market.webp':showSecond?second:first} alt={showSecond?'A colourful platter of vegetables, salad, and toasted bread':'A basket overflowing with fresh vegetables, fruit, and bread'} width="1024" height="1024" fetchPriority="high" onError={()=>setFailed(true)}/>
   <canvas ref={canvasRef} aria-hidden="true" style={{opacity:loaded&&!showSecond?1:0}}/>
   <div className="paint-cursor" ref={cursor} aria-hidden="true"><Sparkles size={21}/><span>make something good</span></div>
  </div>;

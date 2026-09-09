@@ -30,7 +30,7 @@ For many photos, name each file after its SKU, such as `VEG-001.webp`, then choo
 
 New image bytes remain in the open tab until exported. Download an update pack before closing it. If you reopen a draft with unexported image paths, reselect the missing files; the editor prevents exporting a pack that would omit those images. Previously published images stay in the project and are not duplicated in each update pack.
 
-For the two hero images, use matching transparent square compositions and similar lighting. Local assets avoid cross-origin image restrictions. The hero also works as an ordinary image while the brush initializes. On phones or with reduced motion, use the reveal button.
+For the two hero images, use matching portrait compositions, framing, and lighting. Local assets avoid cross-origin image restrictions. The hero also works as an ordinary image while the brush initializes. On phones or with reduced motion, use the reveal button.
 
 ## Make your draft public
 

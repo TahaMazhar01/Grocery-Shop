@@ -66,7 +66,8 @@ Browser tests use Microsoft Edge by default and start the preview automatically.
 | `src/editor/` | Catalog Studio |
 | `src/components/HeroExperience.tsx` | Layered animated hero |
 | `src/components/BrushReveal.tsx` | Canvas brush interaction |
-| `src/redesign.css` | Visual design and motion |
+| `src/campaign.css` | Forest/citrus campaign styling and rich image treatments |
+| `src/redesign.css` | Shared motion and responsive foundation |
 | `docs/client-guide.md` | Everyday editing and publishing instructions |
 | `docs/catalog-format.md` | JSON/CSV field and variant reference |
 | `docs/launch-notes.md` | Demo details and deployment boundaries |

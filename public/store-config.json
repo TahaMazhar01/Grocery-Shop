@@ -8,16 +8,46 @@
   "serviceArea": "",
   "siteUrl": "",
   "demo": true,
-  "announcement": "Fresh ideas. Everyday favourites. A basket full of possibilities.",
+  "announcement": "A little inspiration. A lot of good food.",
   "deliveryNote": "Ask us about availability, delivery areas, and charges before placing your order.",
-  "colors": { "green": "#267448", "cream": "#fcfcf6", "accent": "#ed863f" },
-  "fonts": { "display": "Fraunces Variable", "body": "DM Sans Variable" },
-  "navigation": [{ "label": "Home", "href": "/" }, { "label": "Shop all", "href": "/shop" }, { "label": "Our story", "href": "/about" }],
-  "sections": { "categories": true, "featured": true, "editorial": true, "collections": true, "faq": true },
+  "colors": {
+    "green": "#1b5134",
+    "cream": "#f7f7eb",
+    "accent": "#ff7951"
+  },
+  "fonts": {
+    "display": "Fraunces Variable",
+    "body": "DM Sans Variable"
+  },
+  "navigation": [
+    {
+      "label": "Home",
+      "href": "/"
+    },
+    {
+      "label": "Shop all",
+      "href": "/shop"
+    },
+    {
+      "label": "Our story",
+      "href": "/about"
+    }
+  ],
+  "sections": {
+    "categories": true,
+    "featured": true,
+    "editorial": true,
+    "collections": true,
+    "faq": true
+  },
   "hero": {
-    "eyebrow": "FRESH IDEAS FOR YOUR EVERYDAY",
-    "title": "Fresh finds.", "italicTitle": "Good days.",
-    "description": "From your first coffee to what’s for dinner. Fill your basket with the things you love — and a little something new.",
-    "image": "/images/hero-grocery-tote.webp", "revealImage": "/images/hero-meal-cutout.webp", "editorialImage": "/images/hero-table.webp", "brushFadeMs": 1200
+    "eyebrow": "GOOD THINGS START HERE",
+    "title": "Good food.",
+    "italicTitle": "Great days.",
+    "description": "Fruit, veg and everyday favourites. Pick what looks good. We’ll help with the rest.",
+    "image": "/images/hero-market-rich.webp",
+    "revealImage": "/images/hero-meal-rich.webp",
+    "editorialImage": "/images/hero-meal-rich.webp",
+    "brushFadeMs": 1200
   }
 }

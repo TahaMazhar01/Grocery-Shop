@@ -189,8 +189,10 @@
       "description": "For salads, sandwiches, and the start of a good sauce.",
       "price": 180,
       "compareAtPrice": null,
-      "image": "/images/products/tomatoes.webp",
-      "images": [],
+      "image": "/images/products/tomatoes-rich.webp",
+      "images": [
+        "/images/products/tomatoes.webp"
+      ],
       "imageAlt": "Vine tomatoes",
       "category": "vegetables",
       "subcategory": "everyday-vegetables",
@@ -232,8 +234,10 @@
       "description": "Slice onto toast, tuck into a sandwich, or mash with a squeeze of lemon.",
       "price": 420,
       "compareAtPrice": null,
-      "image": "/images/products/avocado.webp",
-      "images": [],
+      "image": "/images/products/avocado-rich.webp",
+      "images": [
+        "/images/products/avocado.webp"
+      ],
       "imageAlt": "Hass avocados",
       "category": "fruit",
       "subcategory": "everyday-fruit",
@@ -258,8 +262,10 @@
       "description": "A good reason to make soup. An even better reason to make toast.",
       "price": 650,
       "compareAtPrice": null,
-      "image": "/images/products/bread.webp",
-      "images": [],
+      "image": "/images/products/bread-rich.webp",
+      "images": [
+        "/images/products/bread.webp"
+      ],
       "imageAlt": "Sourdough loaf",
       "category": "bakery",
       "subcategory": "bread",

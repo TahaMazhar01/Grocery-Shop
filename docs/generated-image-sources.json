@@ -30,5 +30,25 @@
   {
     "name": "hero-meal-cutout",
     "source": "exec-cfbe7adf-95f0-413a-b3f3-438612cd1aa7.png"
+  },
+  {
+    "name": "hero-market-rich",
+    "source": "exec-0c1af509-fcf5-4f19-8f0e-bc707d96685e.png"
+  },
+  {
+    "name": "products/tomatoes-rich",
+    "source": "exec-f2b875d3-48a9-442d-874e-8064180d5532.png"
+  },
+  {
+    "name": "products/avocado-rich",
+    "source": "exec-6fc5abb7-8ae2-47fa-a67d-9947796f681a.png"
+  },
+  {
+    "name": "products/bread-rich",
+    "source": "exec-4d37730d-b831-481c-8e30-a6dc6b220b7b.png"
+  },
+  {
+    "name": "hero-meal-rich",
+    "source": "exec-d14ed3d4-c03b-49c2-ac2f-0e601373e0c5.png"
   }
 ]
