@@ -1,0 +1,5 @@
+﻿sku,title,price,unit,category,subcategory,description,image,stock,availability,active,externalUrl,productId,variantLabel
+"VEG-001","Vine tomatoes","180","500 g","vegetables","everyday-vegetables","For salads, sandwiches, and the start of a good sauce.","/images/products/tomatoes-rich.webp","","available","true","","prod-001","500 g"
+"VEG-001-L","Vine tomatoes","360","1 kg","vegetables","everyday-vegetables","For salads, sandwiches, and the start of a good sauce.","/images/products/tomatoes-rich.webp","","available","true","","prod-001","1 kg"
+"FRU-002","Hass avocados","420","2 pieces","fruit","everyday-fruit","Slice onto toast, tuck into a sandwich, or mash with a squeeze of lemon.","/images/products/avocado-rich.webp","","available","true","","prod-002",""
+"BAK-003","Sourdough loaf","650","1 loaf","bakery","bread","A good reason to make soup. An even better reason to make toast.","/images/products/bread-rich.webp","","available","true","","prod-003",""

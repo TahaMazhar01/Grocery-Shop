@@ -1,22 +1,50 @@
-import {test,expect,type Page} from '@playwright/test';
-// Trace snapshots can outlast the fading canvas trail; sample live pixels instead.
-test.use({trace:'off'});
-async function ready(page:Page,path='/'){await page.goto(path);await expect(page.locator('h1').first()).toBeVisible();await page.evaluate(()=>document.fonts.ready);}
-async function screenshotAll(page:Page,name:string){await page.evaluate(async()=>{const imgs=Array.from(document.images);imgs.forEach(i=>i.loading='eager');await Promise.all(imgs.map(i=>i.decode().catch(()=>{})));});await page.screenshot({path:`artifacts/${name}.png`,fullPage:true});}
-test('desktop homepage loads, brush changes pixels, and the accessible toggle works',async({page})=>{
- test.setTimeout(60000);
- const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await ready(page);
- const toggle=page.getByRole('button',{name:'A little grocery magic'});await expect(toggle).toBeEnabled();
- const canvas=page.locator('.hero-image-area canvas');
- await page.waitForLoadState('networkidle');
- await page.waitForTimeout(4400);
- const fingerprint=()=>canvas.evaluate((c:HTMLCanvasElement)=>{const tiny=document.createElement('canvas');tiny.width=32;tiny.height=32;const ctx=tiny.getContext('2d')!;ctx.drawImage(c,0,0,32,32);return Array.from(ctx.getImageData(0,0,32,32).data).reduce((sum,n,i)=>(sum+n*(i+1))%1000000007,0);});
- const before=await fingerprint();const box=(await canvas.boundingBox())!;
- await page.mouse.move(box.x+box.width*.35,box.y+box.height*.42);
- await page.mouse.move(box.x+box.width*.6,box.y+box.height*.43,{steps:12});
- await expect(page.locator('.paint-cursor')).toHaveCSS('opacity','1');
- await page.waitForTimeout(200);
- expect(await fingerprint()).not.toBe(before);
- await toggle.click();await expect(page.getByRole('button',{name:'Back to the basket'})).toHaveAttribute('aria-pressed','true');
- await page.getByRole('button',{name:'Back to the basket'}).click();await screenshotAll(page,'home-desktop');expect(errors).toEqual([]);
+import { test, expect } from '@playwright/test';
+
+test('single-scene hero moves, pauses, respects reduced motion and adds a pick', async ({ page }) => {
+  const errors: string[] = [];
+  page.on('pageerror', error => errors.push(error.message));
+  await page.goto('/');
+  const hero = page.locator('.daily-hero');
+  const photo = hero.locator('.daily-hero-photo');
+  await expect(page.locator('h1')).toContainText('Bring home');
+  await expect(photo).toBeVisible();
+  await expect(hero.locator('canvas, .reveal-button, .paint-cursor')).toHaveCount(0);
+  await photo.evaluate(async (image: HTMLImageElement) => image.decode());
+  const before = await photo.evaluate(node => getComputedStyle(node).transform);
+  await expect.poll(() => photo.evaluate(node => getComputedStyle(node).transform)).not.toBe(before);
+  await page.getByRole('button', { name: 'Pause animation' }).click();
+  await expect(photo).toHaveCSS('animation-play-state', 'paused');
+  const paused = await photo.evaluate(node => getComputedStyle(node).transform);
+  await page.waitForTimeout(300);
+  expect(await photo.evaluate(node => getComputedStyle(node).transform)).toBe(paused);
+  await page.getByRole('button', { name: 'Play animation' }).click();
+  const pick = hero.locator('.daily-pick').first();
+  const title = await pick.locator('a span').innerText();
+  await pick.getByRole('button').click();
+  await expect(page.getByRole('button', { name: 'Open basket, 1 items' })).toBeVisible();
+  await page.getByRole('button', { name: 'Open basket, 1 items' }).click();
+  await expect(page.getByRole('dialog', { name: 'Your basket' })).toContainText(title);
+  await page.keyboard.press('Escape');
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect(photo).toHaveCSS('animation-name', 'none');
+  await expect(hero.locator('.daily-motion')).toBeDisabled();
+  expect(errors).toEqual([]);
+});
+
+test('configured WhatsApp number is used by contact and basket actions', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('.daily-contact')).toHaveAttribute('href', /^https:\/\/wa\.me\/17373075495\?text=/);
+  await page.evaluate(() => {
+    (window as unknown as { capturedURL: string }).capturedURL = '';
+    window.open = ((url?: string | URL) => { (window as unknown as { capturedURL: string }).capturedURL = String(url); return null; }) as typeof window.open;
+  });
+  await page.getByRole('button', { name: 'Contact us on WhatsApp' }).click();
+  await expect.poll(() => page.evaluate(() => (window as unknown as { capturedURL: string }).capturedURL)).toContain('https://wa.me/17373075495?text=');
+  await page.locator('.daily-pick').first().getByRole('button').click();
+  await page.getByRole('button', { name: /Open basket,/ }).click();
+  await page.getByRole('button', { name: 'Send order enquiry on WhatsApp' }).click();
+  const url = await page.evaluate(() => (window as unknown as { capturedURL: string }).capturedURL);
+  expect(new URL(url).pathname).toBe('/17373075495');
+  expect(new URL(url).searchParams.get('text')).toContain('Qty: 1');
+  await expect(page.locator('.cart-item')).toHaveCount(1);
 });

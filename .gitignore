@@ -9,5 +9,6 @@ catalog/backups/
 image-sources/
 *.tsbuildinfo
 *.log
+*.xlsx.inspect.ndjson
 .env*
 !.env.example

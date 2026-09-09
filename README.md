@@ -1,6 +1,6 @@
 # Market & Basket
 
-A grocery storefront with an animated produce scene, a two-image brush reveal, and a separate catalog editor. React, TypeScript, and Vite produce static files; there is no application server or database.
+A grocery storefront with a sunlit photographic hero, subtle camera movement, a shelf of quick-add products, and a separate catalog editor. React, TypeScript, and Vite produce static files; there is no application server or database.
 
 ## Run locally
 
@@ -19,7 +19,7 @@ Keep the terminal running while using either page. Open the site through this ad
 ## What is included
 
 - 48 demo products, nine categories, subcategories, variants, and three collections.
-- Floating grocery artwork, pointer depth, fading brush trails, a rotating stamp, moving ribbon, scroll entrances, image parallax, and product hover effects. A pause control and reduced-motion support are built in.
+- A single grocery photograph with gentle camera movement and pointer depth, a moving note, quick-add hero picks, a moving ribbon, scroll entrances, image parallax, and product hover effects. A pause control and reduced-motion support are built in.
 - Search, filters, sorting, pagination, stable product URLs, favourites, saved baskets, and useful empty states.
 - WhatsApp contact and complete order enquiries with selected SKUs, pack sizes, quantities, notes, and estimated totals. The store confirms availability and final prices in the conversation.
 - A local editor with add/edit/duplicate/archive/restore/delete, category and collection management, bulk editing, CSV/JSON imports, column mapping, validation reports, and export packs.
@@ -64,12 +64,18 @@ Browser tests use Microsoft Edge by default and start the preview automatically.
 | `public/images/` | Included artwork and product photos |
 | `public/data/` | Generated storefront feeds and editor template |
 | `src/editor/` | Catalog Studio |
-| `src/components/HeroExperience.tsx` | Layered animated hero |
-| `src/components/BrushReveal.tsx` | Canvas brush interaction |
+| `src/components/HeroExperience.tsx` | Single-scene hero and quick-add picks |
+| `src/daily-hero.css` | Hero composition, motion, and responsive styling |
 | `src/campaign.css` | Forest/citrus campaign styling and rich image treatments |
 | `src/redesign.css` | Shared motion and responsive foundation |
 | `docs/client-guide.md` | Everyday editing and publishing instructions |
 | `docs/catalog-format.md` | JSON/CSV field and variant reference |
 | `docs/launch-notes.md` | Demo details and deployment boundaries |
 
-The temporary brand is **Market & Basket**, with illustrative PKR prices. The WhatsApp number, email, service area, and public domain are deliberately blank. Add the client's real details in Store settings before launch. Bot integration is deferred.
+The temporary brand is **Market & Basket**, with illustrative PKR prices. WhatsApp contact and order enquiries use **+1 (737) 307-5495**. Email, service area, and public domain still need the client's confirmed details before launch. Bot integration is deferred.
+
+## Client product-listing files
+
+Send the files in `outputs/client-listing-01a08159/` to the client. `Product-listing.xlsx` has a blank Products table, examples, category dropdowns, and a Help sheet. `current-products.csv` and `current-products.json` contain the complete current demo catalog. The pack also includes a blank CSV and short import examples.
+
+The editor accepts CSV and JSON. Save the Products sheet as **CSV UTF-8** before importing it. Use Merge to update existing SKUs without removing omitted products. `START-HERE.txt` explains photos, pack sizes, hiding products, and publishing.

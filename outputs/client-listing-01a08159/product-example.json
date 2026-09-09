@@ -1,0 +1,103 @@
+[
+  {
+    "id": "prod-001",
+    "sku": "VEG-001",
+    "slug": "vine-tomatoes",
+    "title": "Vine tomatoes",
+    "description": "For salads, sandwiches, and the start of a good sauce.",
+    "price": 180,
+    "compareAtPrice": null,
+    "image": "/images/products/tomatoes-rich.webp",
+    "images": [
+      "/images/products/tomatoes.webp"
+    ],
+    "imageAlt": "Vine tomatoes",
+    "category": "vegetables",
+    "subcategory": "everyday-vegetables",
+    "unit": "500 g",
+    "stock": null,
+    "availability": "available",
+    "featured": true,
+    "active": true,
+    "tags": [
+      "vegetables",
+      "everyday-vegetables"
+    ],
+    "externalUrl": null,
+    "variants": [
+      {
+        "id": "prod-001-standard",
+        "sku": "VEG-001",
+        "label": "500 g",
+        "price": 180,
+        "stock": null,
+        "availability": "available"
+      },
+      {
+        "id": "prod-001-large",
+        "sku": "VEG-001-L",
+        "label": "1 kg",
+        "price": 360,
+        "stock": null,
+        "availability": "available"
+      }
+    ],
+    "variableWeight": true
+  },
+  {
+    "id": "prod-002",
+    "sku": "FRU-002",
+    "slug": "hass-avocados",
+    "title": "Hass avocados",
+    "description": "Slice onto toast, tuck into a sandwich, or mash with a squeeze of lemon.",
+    "price": 420,
+    "compareAtPrice": null,
+    "image": "/images/products/avocado-rich.webp",
+    "images": [
+      "/images/products/avocado.webp"
+    ],
+    "imageAlt": "Hass avocados",
+    "category": "fruit",
+    "subcategory": "everyday-fruit",
+    "unit": "2 pieces",
+    "stock": null,
+    "availability": "available",
+    "featured": true,
+    "active": true,
+    "tags": [
+      "fruit",
+      "everyday-fruit"
+    ],
+    "externalUrl": null,
+    "variants": [],
+    "variableWeight": false
+  },
+  {
+    "id": "prod-003",
+    "sku": "BAK-003",
+    "slug": "sourdough-loaf",
+    "title": "Sourdough loaf",
+    "description": "A good reason to make soup. An even better reason to make toast.",
+    "price": 650,
+    "compareAtPrice": null,
+    "image": "/images/products/bread-rich.webp",
+    "images": [
+      "/images/products/bread.webp"
+    ],
+    "imageAlt": "Sourdough loaf",
+    "category": "bakery",
+    "subcategory": "bread",
+    "unit": "1 loaf",
+    "stock": null,
+    "availability": "available",
+    "featured": true,
+    "active": true,
+    "tags": [
+      "bakery",
+      "bread"
+    ],
+    "externalUrl": null,
+    "variants": [],
+    "variableWeight": false
+  }
+]

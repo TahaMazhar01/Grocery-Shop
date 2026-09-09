@@ -4,7 +4,7 @@
 
 Market & Basket is a temporary brand. There are 48 illustrative grocery products with PKR prices, nine categories, and three collections. Twenty products currently use the explicit “Photo coming soon” state. Original generated hero and featured product artwork are demonstration visuals; other included sample images are recorded in `stock-image-sources.json`.
 
-The WhatsApp number, service area, email, and website URL are empty. Contact controls lead to the setup-state contact page, and the basket can be copied or downloaded. Supply the real business details, replace demo content, and review prices, imagery, availability, and delivery copy before switching off demo mode. There are no invented reviews or certifications.
+The WhatsApp number is configured as +1 (737) 307-5495 for contact and complete basket enquiries. The service area, email, and website URL are still empty. Supply these remaining business details, replace demo content, and review prices, imagery, availability, and delivery copy before switching off demo mode. There are no invented reviews or certifications.
 
 ## Static deployment
 

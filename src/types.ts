@@ -19,5 +19,5 @@ export interface StoreConfig {
   colors: { green: string; cream: string; accent: string }; fonts: { display: string; body: string };
   navigation: { label: string; href: string }[];
   sections: { categories: boolean; featured: boolean; editorial: boolean; collections: boolean; faq: boolean };
-  hero: { eyebrow: string; title: string; italicTitle: string; description: string; image: string; revealImage: string; editorialImage?: string; brushFadeMs: number };
+  hero: { eyebrow: string; title: string; italicTitle: string; description: string; image: string; editorialImage?: string };
 }

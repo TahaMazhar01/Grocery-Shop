@@ -30,7 +30,7 @@ For many photos, name each file after its SKU, such as `VEG-001.webp`, then choo
 
 New image bytes remain in the open tab until exported. Download an update pack before closing it. If you reopen a draft with unexported image paths, reselect the missing files; the editor prevents exporting a pack that would omit those images. Previously published images stay in the project and are not duplicated in each update pack.
 
-For the two hero images, use matching portrait compositions, framing, and lighting. Local assets avoid cross-origin image restrictions. The hero also works as an ordinary image while the brush initializes. On phones or with reduced motion, use the reveal button.
+The hero uses one landscape photograph. Replace Hero photograph in Store settings; keep the subject toward the right so the headline remains legible on desktop. The new design has gentle camera movement and a pause control. Reduced-motion preferences stop the animation. The editorial image is a separate photograph lower on the homepage.
 
 ## Make your draft public
 
@@ -47,3 +47,9 @@ For a developer-managed Git workflow, the developer can run the same helper, com
 Replace the temporary brand, announcement, colours, fonts, hero text, and contact details here. Add the WhatsApp number with country code and digits only, without spaces or a plus sign. Add the confirmed service area and website address. Demo mode must remain on until these are supplied.
 
 The default prices, products, and pictures demonstrate the design. Replace them with the client's actual stock and prices. Images generated for the concept are listed separately from sample photos in the image source documentation.
+
+## Files to send to the client
+
+Use `outputs/client-listing-01a08159/Product-listing.xlsx` for new listings, or `current-products.csv` / `current-products.json` for changes to the existing demo catalog. The Excel workbook has a blank Products sheet, separate examples, and a Help sheet. Save only Products as CSV UTF-8 to import it in Catalog Studio, or have the client return the workbook and photos to you.
+
+WhatsApp is configured as +1 (737) 307-5495. Older saved browser drafts may still contain earlier settings; review Store settings before exporting a previous draft.

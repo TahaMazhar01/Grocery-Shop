@@ -1,0 +1,71 @@
+PRODUCT LISTING PACK
+
+For adding, changing and hiding products without editing website code.
+The supplied examples and current catalog contain demo products and illustrative PKR prices.
+
+THE EASIEST WAY
+
+1. Open Product-listing.xlsx in Excel and select the Products sheet.
+2. Fill one row for each product or pack size. The first five yellow columns are required:
+   sku = a unique product code, such as APPLE-500
+   title = the product name
+   price = numbers only, in PKR
+   unit = the pack size, such as 500 g, 1 kg or 1 loaf
+   category = choose from the dropdown
+3. Add optional photos, descriptions and availability. The Help sheet explains each field.
+4. Save and send the Excel file and any product photos back to your developer.
+
+The Products sheet is blank. The Examples sheet contains sample rows for reference.
+The table starts with 1,000 rows. To add more, press Tab in its last cell or extend the table.
+
+IF YOU WANT TO IMPORT IT YOURSELF
+
+Select the Products sheet and save a copy as CSV UTF-8 (comma delimited).
+In Catalog Studio, choose Import, select the CSV, check the column mapping and choose Merge.
+Preview the import and correct any rejected rows before applying it.
+The editor accepts CSV and JSON. It does not import XLSX directly.
+
+To update the supplied existing catalog, use current-products.csv or current-products.json.
+Keep each product's SKU and ID unchanged. Current-products.csv includes every pack size.
+Blank-product-listing.csv is a blank alternative if you prefer a spreadsheet without formatting.
+Example-product-listing.csv and product-example.json show accepted import structures.
+
+ADDING PHOTOS AND LINKS
+
+image: paste a direct HTTPS link to an image, not a web page containing the image.
+You can leave it blank and send the photo separately. Name each photo after its SKU,
+for example APPLE-500.jpg, so the developer can match thousands of images together.
+Existing paths beginning /images/ refer to images already included in the website project.
+They are not Windows file locations.
+
+externalUrl: optional HTTPS link to a product or supplier page. This is separate from image.
+
+PACK SIZES
+
+Give each size a unique SKU and its own price, unit and variantLabel.
+Use the same productId and product title for all sizes of one product.
+Repeat the shared category, description and main image on each row.
+Leave productId and variantLabel blank for a new product with only one size.
+
+CHANGING OR REMOVING PRODUCTS
+
+Update a price or description using the existing SKU. Keep productId stable when present.
+Set active to false to hide a product after publishing, or true to show it again.
+Deleting a row from a Merge import does not delete that product from the website.
+Use Catalog Studio's product form to delete a product or remove a pack size.
+Replace import removes products absent from the file; only use it for a complete catalog.
+A mapped blank optional field can clear its old value. For a price-only update, use sku,price.
+
+STOCK AND AVAILABILITY
+
+Stock is a whole number of sellable packs. Blank means the count is unknown.
+Zero stock or unavailable prevents adding the item to a basket.
+Availability can be available, unavailable or unknown.
+These values are entered manually; placing a WhatsApp enquiry does not reserve stock.
+
+MAKING CHANGES LIVE
+
+Saving a spreadsheet or an editor draft does not update the public website.
+Your developer must import the data, review it, build and publish the update.
+If using Catalog Studio, export the update pack before closing the tab after adding photos.
+Keep a copy of each completed listing file and its photos as your backup.

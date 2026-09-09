@@ -1,15 +1,109 @@
 import { useEffect, useRef, useState } from 'react';
-import { Apple, ArrowDown, ArrowRight, ArrowUpRight, Check, Leaf, Milk, MoveUpRight, Pause, Play, Plus, Sparkles, Sprout, Wheat } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Check, Pause, Play, Plus, Sprout } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useStore } from '../context';
-import { BrushReveal } from './BrushReveal';
 import { ProductImage } from './Image';
+import { WhatsAppIcon } from './Layout';
 import { readLocal, writeLocal } from '../lib/files';
-export function Hero(){
- const {config,home,format,add,meta}=useStore();const {hero}=config;const root=useRef<HTMLElement>(null);const [revealed,setRevealed]=useState(false);const [ready,setReady]=useState(false);const [paused,setPaused]=useState(()=>readLocal('mb-motion-paused',false));const [reduce,setReduce]=useState(()=>matchMedia('(prefers-reduced-motion: reduce)').matches);const [added,setAdded]=useState('');
- const motion=!paused&&!reduce;const tomato=home.find(p=>p.slug==='vine-tomatoes');
- useEffect(()=>{const media=matchMedia('(prefers-reduced-motion: reduce)');const update=()=>setReduce(media.matches);media.addEventListener('change',update);return()=>media.removeEventListener('change',update);},[]);
- useEffect(()=>{document.documentElement.dataset.motion=motion?'on':'paused';writeLocal('mb-motion-paused',paused);},[motion,paused]);
- useEffect(()=>{const node=root.current;if(!node)return;let frame=0;let x=0,y=0;let active=true;const draw=()=>{frame=0;node.style.setProperty('--pointer-x',String(x));node.style.setProperty('--pointer-y',String(y));};const move=(e:PointerEvent)=>{if(!motion||e.pointerType==='touch')return;const rect=node.getBoundingClientRect();x=(e.clientX-rect.left)/rect.width-.5;y=(e.clientY-rect.top)/rect.height-.5;if(!frame)frame=requestAnimationFrame(draw);};const leave=()=>{x=0;y=0;if(!frame)frame=requestAnimationFrame(draw);};const updateVisibility=()=>{node.dataset.visible=String(active&&!document.hidden);};const io=new IntersectionObserver(([entry])=>{active=entry.isIntersecting;updateVisibility();},{threshold:0});io.observe(node);document.addEventListener('visibilitychange',updateVisibility);node.addEventListener('pointermove',move);node.addEventListener('pointerleave',leave);return()=>{cancelAnimationFrame(frame);io.disconnect();document.removeEventListener('visibilitychange',updateVisibility);node.removeEventListener('pointermove',move);node.removeEventListener('pointerleave',leave);};},[motion]);
- return <section className="hero-experience hero-campaign" ref={root} data-visible="true"><div className="hero-v2 section-shell"><div className="hero-v2-copy"><div className="fresh-eyebrow"><span><Leaf size={14}/></span>{hero.eyebrow}</div><h1><span>{hero.title}</span><em>{hero.italicTitle}<svg viewBox="0 0 425 19" preserveAspectRatio="none" aria-hidden="true"><path d="M5 12C98 0 293 2 418 8M74 16C178 7 294 9 355 13"/></svg></em></h1><p>{hero.description}</p><div className="hero-v2-actions"><Link className="btn hero-shop-button" to="/shop">Shop the market <span><ArrowUpRight size={21}/></span></Link><a href="#categories" className="hero-explore">Find your favourites <ArrowRight size={17}/></a></div><div className="hero-category-links"><Link to="/category/vegetables"><Apple size={15}/>Fruit & veg</Link><Link to="/category/dairy-eggs"><Milk size={15}/>Dairy & eggs</Link><Link to="/category/pantry"><Wheat size={15}/>Pantry staples</Link></div><div className="hero-small-note"><div className="little-produce"><img src="/images/products/apple.webp" alt=""/><img src="/images/products/carrots.webp" alt=""/><img src="/images/products/lemon.webp" alt=""/></div><span><strong>{meta.count} good things.</strong><br/>From the everyday to the unexpected.</span></div></div><div className="hero-world"><span className="campaign-photo-label">THE MARKET EDIT <b>01 / 02</b></span><div className="hero-orbit" aria-hidden="true"><span className="orbit-ring ring-one"/><span className="orbit-ring ring-two"/><span className="orbit-dot"/></div><div className="hero-back-word" aria-hidden="true">fresh</div><div className="scene-stroke" aria-hidden="true"><svg viewBox="0 0 170 95"><path d="M6 61C31 31 77 33 65 56C54 77 108 87 135 32L118 35M135 32L137 51"/></svg></div><div className="hero-grocery-layer"><BrushReveal first={hero.image} second={hero.revealImage} hold={hero.brushFadeMs} showSecond={revealed} motion={motion} onReady={setReady} fit="cover"/></div><div className="floating-lemon" aria-hidden="true"><img src="/images/products/lemon.webp" alt=""/></div><Leaf className="floating-leaf leaf-one" aria-hidden="true"/><Leaf className="floating-leaf leaf-two" aria-hidden="true"/><span className="hero-spark spark-one" aria-hidden="true">✳</span><span className="hero-spark spark-two" aria-hidden="true">✳</span><Link className="floating-note" to="/shop?collection=tonights-dinner"><span className="floating-note-icon"><Sparkles size={19}/></span><div>What’s cooking?<small>Start with a little inspiration.</small></div><ArrowUpRight size={16}/></Link>{tomato&&<div className="floating-product"><Link to={`/product/${tomato.slug}`}><ProductImage src={tomato.image} alt={tomato.title}/><span><small>ON THE MENU</small><strong>{tomato.title}</strong><b>{format(tomato.price)} <em>/ {tomato.unit}</em></b></span></Link><button aria-label="Add hero tomatoes to basket" onClick={()=>{add(tomato);setAdded(tomato.id);setTimeout(()=>setAdded(''),1500);}}>{added===tomato.id?<Check size={18}/>:<Plus size={18}/>}</button></div>}<div className="hero-round-stamp" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><path id="stamp-circle" d="M60,60m-44,0a44,44 0 1,1 88,0a44,44 0 1,1 -88,0"/></defs><text><textPath href="#stamp-circle" textLength="274">GOOD FOOD · GOOD MOOD · GOOD FOOD · </textPath></text></svg><Sprout size={31} strokeWidth={1.5}/></div><div className="hero-magic-controls"><button className="reveal-button v2-reveal" aria-label={revealed?'Back to the basket':'A little grocery magic'} aria-pressed={revealed} disabled={!ready} onClick={()=>setRevealed(!revealed)}><Sparkles size={16}/><span>{revealed?'Back to the basket':'Paint your next meal'}</span><MoveUpRight size={14}/></button><span className="magic-handwritten">Move your cursor. Find your next meal.</span></div></div><div className="hero-bottom-line"><a href="#categories"><span className="scroll-down-icon"><ArrowDown size={14}/></span>SCROLL FOR THE GOOD STUFF</a><button className="motion-toggle" aria-label={paused?'Play animation':'Pause animation'} aria-pressed={!paused} onClick={()=>setPaused(!paused)}>{paused||reduce?<Play size={13}/>:<Pause size={13}/>}<span>{reduce?'Reduced motion':paused?'Motion paused':'Pause the motion'}</span></button></div></div></section>;
+import { canBuy, whatsappLink } from '../lib/catalog';
+
+export function Hero() {
+  const { config, home, format, add } = useStore();
+  const root = useRef<HTMLElement>(null);
+  const feedbackTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [paused, setPaused] = useState(() => readLocal('mb-motion-paused', false));
+  const [reduced, setReduced] = useState(() => matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const [added, setAdded] = useState('');
+  const motion = !paused && !reduced;
+  const picks = home.filter(p => p.active && p.image).slice(0, 3);
+  const contact = whatsappLink(config.whatsapp, `Hello ${config.brand}! I'd like to ask about your groceries.`);
+
+  useEffect(() => {
+    const media = matchMedia('(prefers-reduced-motion: reduce)');
+    const update = () => setReduced(media.matches);
+    media.addEventListener('change', update);
+    return () => media.removeEventListener('change', update);
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.dataset.motion = motion ? 'on' : 'paused';
+    writeLocal('mb-motion-paused', paused);
+  }, [motion, paused]);
+
+  useEffect(() => () => { if (feedbackTimer.current) clearTimeout(feedbackTimer.current); }, []);
+
+  useEffect(() => {
+    const node = root.current;
+    if (!node) return;
+    let frame = 0;
+    let x = 0;
+    let y = 0;
+    let visible = true;
+    const draw = () => {
+      frame = 0;
+      node.style.setProperty('--scene-x', `${x}px`);
+      node.style.setProperty('--scene-y', `${y}px`);
+    };
+    const move = (event: PointerEvent) => {
+      if (!motion || event.pointerType === 'touch') return;
+      const bounds = node.getBoundingClientRect();
+      x = ((event.clientX - bounds.left) / bounds.width - .5) * 14;
+      y = ((event.clientY - bounds.top) / bounds.height - .5) * 10;
+      if (!frame) frame = requestAnimationFrame(draw);
+    };
+    const reset = () => { x = 0; y = 0; if (!frame) frame = requestAnimationFrame(draw); };
+    const updateVisibility = () => { node.dataset.visible = String(visible && !document.hidden); };
+    const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; updateVisibility(); });
+    observer.observe(node);
+    reset();
+    document.addEventListener('visibilitychange', updateVisibility);
+    node.addEventListener('pointermove', move);
+    node.addEventListener('pointerleave', reset);
+    return () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+      document.removeEventListener('visibilitychange', updateVisibility);
+      node.removeEventListener('pointermove', move);
+      node.removeEventListener('pointerleave', reset);
+    };
+  }, [motion]);
+
+  return <section className="daily-hero" ref={root} data-visible="true" data-motion={motion ? 'on' : 'off'} aria-labelledby="daily-hero-title">
+    <div className="daily-stage">
+      <div className="daily-scene">
+        <img className="daily-hero-photo" src={config.hero.image} alt="A paper grocery bag filled with colourful vegetables and bread, with citrus and avocado on the table" width="1536" height="1024" fetchPriority="high" />
+      </div>
+      <div className="daily-content section-shell">
+        <div className="daily-copy">
+          <p className="daily-kicker"><span /><span>{config.hero.eyebrow}</span></p>
+          <h1 id="daily-hero-title"><span>{config.hero.title}</span><em>{config.hero.italicTitle}</em></h1>
+          <p className="daily-description">{config.hero.description}</p>
+          <div className="daily-actions">
+            <Link to="/shop" className="daily-shop">Explore the shop <span><ArrowUpRight size={22} /></span></Link>
+            {contact ? <a className="daily-contact" href={contact} target="_blank" rel="noopener noreferrer"><WhatsAppIcon size={19} /> Ask us on WhatsApp</a> : <Link to="/contact" className="daily-contact">Ask us a question <ArrowRight size={17} /></Link>}
+          </div>
+          <div className="daily-shelf-links"><Link to="/category/vegetables">Fresh produce</Link><span> / </span><Link to="/category/bakery">Daily bread</Link><span> / </span><Link to="/category/pantry">Pantry favourites</Link></div>
+        </div>
+        <div className="daily-note" aria-hidden="true"><Sprout size={21} /><span>Good food.<br /><em>Everyday joy.</em></span></div>
+        <button className="daily-motion" aria-label={paused ? 'Play animation' : 'Pause animation'} aria-pressed={!paused} disabled={reduced} onClick={() => setPaused(value => !value)}>{reduced || paused ? <Play size={14} /> : <Pause size={14} />}<span>{reduced ? 'Reduced motion' : paused ? 'Motion paused' : 'Pause motion'}</span></button>
+      </div>
+    </div>
+    {picks.length > 0 && <div className="daily-picks section-shell">
+      <div className="daily-picks-heading"><span>START WITH SOMETHING GOOD</span><h2>A few favourites.</h2><Link to="/shop">Meet the whole market <ArrowRight size={15} /></Link></div>
+      {picks.map(product => {
+        const variant = product.variants[0];
+        const unavailable = !canBuy(variant ?? product);
+        return <article className="daily-pick" key={product.id}>
+          <Link to={`/product/${product.slug}`}><ProductImage src={product.image} alt={product.title} /><div><span>{product.title}</span><small>{product.unit}</small><strong>{format(product.price)}</strong></div></Link>
+          <button className={added === product.id ? 'is-added' : ''} disabled={unavailable} aria-label={unavailable ? `${product.title} is unavailable` : `Add ${product.title} from hero picks`} onClick={() => {
+            add(product, variant?.id);
+            setAdded(product.id);
+            if (feedbackTimer.current) clearTimeout(feedbackTimer.current);
+            feedbackTimer.current = setTimeout(() => setAdded(''), 1600);
+          }}>{added === product.id ? <Check size={18} /> : <Plus size={18} />}</button>
+        </article>;
+      })}
+    </div>}
+    <span className="sr-only" role="status">{added ? 'Added to your basket.' : ''}</span>
+  </section>;
 }

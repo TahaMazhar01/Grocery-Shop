@@ -3,7 +3,7 @@
   "tagline": "Good food. Good days.",
   "currency": "PKR",
   "locale": "en-PK",
-  "whatsapp": "",
+  "whatsapp": "17373075495",
   "email": "",
   "serviceArea": "",
   "siteUrl": "",
@@ -41,13 +41,11 @@
     "faq": true
   },
   "hero": {
-    "eyebrow": "GOOD THINGS START HERE",
-    "title": "Good food.",
-    "italicTitle": "Great days.",
-    "description": "Fruit, veg and everyday favourites. Pick what looks good. We’ll help with the rest.",
-    "image": "/images/hero-market-rich.webp",
-    "revealImage": "/images/hero-meal-rich.webp",
-    "editorialImage": "/images/hero-meal-rich.webp",
-    "brushFadeMs": 1200
+    "eyebrow": "YOUR EVERYDAY MARKET",
+    "title": "Bring home",
+    "italicTitle": "the good stuff.",
+    "description": "Colourful produce, pantry favourites and the little things you came back for. Find your next good meal here.",
+    "image": "/images/hero-everyday-market.webp",
+    "editorialImage": "/images/hero-meal-rich.webp"
   }
 }
